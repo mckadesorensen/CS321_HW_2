@@ -115,9 +115,9 @@ def display_frequency_data(arguments: Namespace) -> None:
     words = break_up_words(string_of_words)
     words_one, words_two, words_three = break_up_list(words)
 
-    words_stats_one = run_get_word_frequency_with_threads(words_one)
-    words_stats_two = run_get_word_frequency_with_threads(words_two)
-    words_stats_three = run_get_word_frequency_with_threads(words_two)
+    words_stats_one = run_get_word_frequency_with_threads(words)
+    # words_stats_two = run_get_word_frequency_with_threads(words_two)
+    # words_stats_three = run_get_word_frequency_with_threads(words_two)
 
     words_stats = words_stats_one
     high_low_values = find_high_low_values(words_stats)

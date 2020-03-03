@@ -24,7 +24,7 @@ def test_get_word_frequency() -> None:
 
 def test_count_of_highest_used_word() -> None:
     words_template = {
-        "Bye": 5,
+        "Bye":   5,
         "hello": 3,
         "there": 2
     }
@@ -38,7 +38,7 @@ def test_count_of_highest_used_word() -> None:
 
 def test_count_of_lowest_used_word() -> None:
     words_template = {
-        "Bye": 5,
+        "Bye":   5,
         "hello": 3,
         "there": 2
     }
@@ -52,15 +52,15 @@ def test_count_of_lowest_used_word() -> None:
 
 def test_find_high_low_values() -> None:
     words_template = {
-        "Bye": 5,
+        "Bye":   5,
         "hello": 3,
         "there": 2
     }
     high_low_values_template = {
-        "lowest": 2,
+        "lowest":  2,
         "highest": 5
     }
-    high_low_values =  wf.find_high_low_values(words_template)
+    high_low_values = wf.find_high_low_values(words_template)
     assert high_low_values == high_low_values_template
     assert type(high_low_values["highest"]) == int
 
@@ -68,7 +68,7 @@ def test_find_high_low_values() -> None:
 def test_set_frequency_levels() -> None:
     levels_test = {
         "low":    {
-            "low_bound": 1,
+            "low_bound":  1,
             "high_bound": 2
         },
         "medium": {
@@ -81,7 +81,7 @@ def test_set_frequency_levels() -> None:
         }
     }
     high_low_levels = {
-        "lowest": 1,
+        "lowest":  1,
         "highest": 6
     }
 

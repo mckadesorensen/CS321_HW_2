@@ -26,12 +26,11 @@ def break_up_words(string_of_words: str) -> List[str]:
     return words
 
 
-# TODO: Check for none A-Z, a-z strings
 def get_word_frequency(words: List[str]) -> Dict[str, int]:
     words_stats = {}
     for word in words:
-        if words_stats.get(word):
-            words_stats[word] += 1
+        if words_stats.get(word.lower()):
+            words_stats[word.lower()] += 1
             continue
 
         words_stats.update({word.lower(): 1})
@@ -113,7 +112,7 @@ def display_frequency_data(arguments: Namespace) -> None:
     start_time = time.time()
     string_of_words = open_file(arguments.file)
     words = break_up_words(string_of_words)
-    words_one, words_two, words_three = break_up_list(words)
+    # words_one, words_two, words_three = break_up_list(words)
 
     words_stats_one = run_get_word_frequency_with_threads(words)
     # words_stats_two = run_get_word_frequency_with_threads(words_two)

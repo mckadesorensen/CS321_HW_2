@@ -4,27 +4,21 @@ from argparse import ArgumentParser
 from status import Status
 
 
-def main(file: str) -> None:
+def get_call_to_memory_time(word: str) -> float:
+    start = time.time()
+    print(f"{word}", end="\n\n")
+    end = time.time()
 
+    return end - start
+
+
+def main(file: str) -> None:
     words_list = [line.rstrip('\n') for line in open(file)]
     status = Status()
-    for word in words_list:
-        start = time.time()
-        print(f"{word}", end="\n\n")
-        end = time.time()
 
-        if .00001 <= end - start < .0000999999:
-            print(f"Time {end - start}")
-            status.l2_cache += 1
-        elif end - start < .0000099999:
-            print(f"Time {end - start}")
-            status.l1_cache += 1
-        elif .00599999 > end - start >= .0001:
-            print(f"Time {start - start}")
-            status.ram += 1
-        elif end - start >= .006:
-            print(f"Time {end - start}")
-            status.tbl_miss += 1
+    for word in words_list:
+        _time = get_call_to_memory_time(word)
+        status.update_status(_time)
 
     status.print_stats()
 

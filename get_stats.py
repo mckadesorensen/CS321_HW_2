@@ -12,7 +12,7 @@ def get_call_to_memory_time(word: str) -> float:
     return end - start
 
 
-def main(file: str) -> None:
+def per_access_time(file: str) -> None:
     words_list = [line.rstrip('\n') for line in open(file)]
     status = Status()
 
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     argument_parser = ArgumentParser()
     argument_parser.add_argument("--file", "-f", type=str, help="Name of file with extension")
 
-    argument_parser.set_defaults(func=main)
+    argument_parser.set_defaults(func=per_access_time)
 
     # Parse and execute selected function
     args = argument_parser.parse_args()

@@ -14,7 +14,9 @@ def create_file(write_file: str) -> None:
     count = 1000*1000
     word_file = "/usr/share/dict/words"
 
-    words = open(word_file).read().splitlines()
+    with open(word_file) as f:
+        words = f.read().splitlines()
+
     words_length = len(words)
 
     all_the_words = []

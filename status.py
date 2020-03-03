@@ -2,7 +2,7 @@ import time
 
 
 class Status:
-    def __init__(self):
+    def __init__(self) -> None:
         self.l1_cache = 0
         self.l2_cache = 0
         self.ram = 0
@@ -10,11 +10,11 @@ class Status:
         self.start_time = time.time()
         self.finish_time = self.calculate_time()
 
-    def calculate_time(self):
+    def calculate_time(self) -> float:
         end_time = time.time()
         return end_time - self.start_time
 
-    def update_status(self, _time):
+    def update_status(self, _time) -> None:
         if .00001 <= _time < .0000999999:
             print(f"Time {_time}")
             self.l2_cache += 1
@@ -28,7 +28,7 @@ class Status:
             print(f"Time {_time}")
             self.tbl_miss += 1
 
-    def print_stats(self):
+    def print_stats(self) -> None:
         print(f"L1 hits: {self.l1_cache}")
         print(f"L2 hits: {self.l2_cache}")
         print(f"Ram hits: {self.ram}")

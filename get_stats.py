@@ -10,7 +10,7 @@ def main(file: str) -> None:
     status = Status()
     for word in words_list:
         start = time.time()
-        print(f"{word}\n")
+        print(f"{word}", end="\n\n")
         end = time.time()
 
         if .00001 <= end - start < .0000999999:

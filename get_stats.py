@@ -13,12 +13,16 @@ def main(file: str) -> None:
         end = time.time()
 
         if .00001 <= end - start < .0000999999:
+            print(f"{start - end}")
             status.l2_cache += 1
         elif end - start < .0000099999:
+            print(f"{start - end}")
             status.l1_cache += 1
         elif .00599999 > end - start >= .0001:
+            print(f"{start - end}")
             status.ram += 1
         elif end - start >= .006:
+            print(f"{start - end}")
             status.tbl_miss += 1
 
     status.print_stats()

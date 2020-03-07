@@ -11,7 +11,7 @@ import operator
 import time
 import concurrent.futures
 
-from argparse import ArgumentParser, Namespace
+from argparse import ArgumentParser
 from typing import List, Dict, Tuple
 
 
@@ -61,6 +61,7 @@ def find_high_low_values(words: Dict[str, int]) -> Dict[str, int]:
 def set_frequency_levels(high_low_values: Dict[str, int]) -> Dict[str, Dict[str, int]]:
     one_third = math.floor((1/3) * high_low_values["highest"])
     two_third = math.floor((2/3) * high_low_values["highest"])
+
     return {
         "low":    {
             "low_bound":  high_low_values["lowest"],
@@ -115,7 +116,6 @@ def display_frequency_data(file: str, thread=1) -> float:
 
     words_stats = run_get_word_frequency_with_threads(words, thread)
 
-    words_stats = words_stats
     high_low_values = find_high_low_values(words_stats)
     random_words = get_random_words(words_stats)
     print_frequency_level(random_words, high_low_values)

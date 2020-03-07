@@ -103,7 +103,7 @@ def break_up_list(words: List[str]) -> Tuple[List[str], List[str], List[str]]:
 
 
 def run_get_word_frequency_with_threads(words: list) -> Dict[str, int]:
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
         future = executor.submit(get_word_frequency, words)
         return future.result()
 

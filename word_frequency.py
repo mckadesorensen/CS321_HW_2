@@ -102,18 +102,18 @@ def break_up_list(words: List[str]) -> Tuple[List[str], List[str], List[str]]:
     return words[0:one_third], words[one_third:two_third], words[two_third:len(words)]
 
 
-def run_get_word_frequency_with_threads(words: list) -> Dict[str, int]:
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+def run_get_word_frequency_with_threads(words: list, threads) -> Dict[str, int]:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
         future = executor.submit(get_word_frequency, words)
         return future.result()
 
 
-def display_frequency_data(arguments: Namespace) -> None:
+def display_frequency_data(file: str, thread=1) -> float:
     start_time = time.time()
-    string_of_words = open_file(arguments.file)
+    string_of_words = open_file(file)
     words = break_up_words(string_of_words)
 
-    words_stats = run_get_word_frequency_with_threads(words)
+    words_stats = run_get_word_frequency_with_threads(words, thread)
 
     words_stats = words_stats
     high_low_values = find_high_low_values(words_stats)
@@ -122,6 +122,7 @@ def display_frequency_data(arguments: Namespace) -> None:
 
     end_time = time.time()
     print(end_time - start_time)
+    return end_time - start_time
 
 
 if __name__ == "__main__":
@@ -133,6 +134,6 @@ if __name__ == "__main__":
     # Parse and execute selected function
     args = argument_parser.parse_args()
     if hasattr(args, 'func'):
-        args.func(args)
+        args.func(args.file)
     else:
         argument_parser.print_help()
